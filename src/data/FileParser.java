@@ -51,7 +51,10 @@ public class FileParser {
 
             int transferAmount = Integer.parseInt(transferAmountStr);
 
-            return new Account(senderAccount, receiverAccount, transferAmount);
+            // Вместо создания нового файла с уникальным именем, используем оригинальное имя файла
+            String fileName = file.getName();
+
+            return new Account(senderAccount, receiverAccount, transferAmount, fileName);
         } catch (IOException | NumberFormatException e) {
             throw new TransferException("FileParsingError", "Ошибка при парсинге файла " + file.getName());
         }
@@ -60,9 +63,5 @@ public class FileParser {
     private static String readLineSafe(BufferedReader reader) throws IOException {
         // Читаем строку, проверяем на null и возвращаем
         return reader.readLine();
-    }
-    private static void handleParsingError(File file, String errorMessage) {
-        String errorInfo = LocalDateTime.now() + " - " + file.getName() + " - " + errorMessage;
-        ReportGenerator.appendOperationToReport(errorInfo);
     }
 }

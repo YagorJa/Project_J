@@ -4,11 +4,13 @@ public class Account {
     private String senderAccount;
     private String receiverAccount;
     private int transferAmount;
+    private String fileName;  // Добавляем поле для хранения имени файла
 
-    public Account(String senderAccount, String receiverAccount, int transferAmount) {
+    public Account(String senderAccount, String receiverAccount, int transferAmount, String fileName) {
         this.senderAccount = senderAccount;
         this.receiverAccount = receiverAccount;
         this.transferAmount = transferAmount;
+        this.fileName = fileName;
     }
 
     public String getSenderAccount() {
@@ -21,5 +23,9 @@ public class Account {
 
     public int getTransferAmount() {
         return transferAmount;
+    }
+
+    public String getFileName() {
+        return fileName;
     }
 }

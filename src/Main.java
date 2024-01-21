@@ -24,7 +24,7 @@ public class Main {
             List<String> errorFiles = new ArrayList<>();
 
             for (Account transfer : transfers) {
-                String fileName = "Перевод: " + transfer.getSenderAccount() + ".txt";
+                String fileName = transfer.getFileName();
                 if (transfers.contains(transfer)) {
                     processedFiles.add(fileName);
                 } else {
@@ -46,11 +46,11 @@ public class Main {
             }
 
         } catch (TransferException e) {
-            System.err.println("Ошибка во время выполнения перевода: " + e.getMessage());
+            handleTransferException(e);
+
         } catch (IOException e) {
             System.err.println("Ошибка ввода/вывода: " + e.getMessage());
         }
-
     }
 
     private static String getDirectoryPathFromConsole() throws IOException {
