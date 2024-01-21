@@ -20,10 +20,12 @@ public class TransferException extends Exception {
     public String getErrorCode() {
         return errorCode;
     }
+
     public static void handleParsingError(File file, String errorMessage) {
         String errorInfo = LocalDateTime.now() + " - " + file.getName() + " - " + errorMessage;
-        ReportGenerator.appendOperationToReport(errorInfo);
+        appendOperationToReport(errorInfo);
     }
+
 
     public static void handleTransferError(Account transfer, String errorMessage) {
         String fileName = "transfer_" + transfer.getSenderAccount() + ".txt";
