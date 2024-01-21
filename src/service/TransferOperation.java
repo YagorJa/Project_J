@@ -16,6 +16,7 @@ public class TransferOperation {
             try {
                 performSingleTransfer(transfer);
             } catch (TransferException e) {
+                TransferException.handleTransferError(transfer, e.getMessage());
                 System.err.println(e.getMessage());
             }
         }
